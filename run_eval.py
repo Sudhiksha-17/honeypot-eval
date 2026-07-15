@@ -1,6 +1,7 @@
 from trajectories import TRAJECTORIES, DECOY_NAIVE, DECOY_REALISTIC, N_MAL, N_BEN
 from honeypot import honeypot_detect
 from monitor import llm_monitor
+from baseline import trivial_baseline
 from plot_results import plot_results
 
 detectors = {
@@ -8,6 +9,7 @@ detectors = {
     "Honeypot (realistic)": lambda t: honeypot_detect(t, DECOY_REALISTIC),
     "Monitor (neutral)":    lambda t: llm_monitor(t, "neutral"),
     "Monitor (risk-aware)": lambda t: llm_monitor(t, "risk_aware"),
+    "Trivial baseline":     lambda t: trivial_baseline(t),
 }
 
 results, matrix = {}, {}
